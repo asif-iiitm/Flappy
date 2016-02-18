@@ -5,7 +5,7 @@
         jar="/home/uchiha/Desktop/Flappy/core/build/libs/core-1.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="b12b66d3714fb638553f010223b473c314ff1274">
+        sha1="d1d92e7c08ca239c2d56b78d3c8a54ff7d182067">
         <dex dex="/home/uchiha/Desktop/Flappy/android/build/intermediates/pre-dexed/debug/core-1.0-d3a6978cc2ccd72fb1fb430160d393e0808f785a.jar" />
     </item>
 

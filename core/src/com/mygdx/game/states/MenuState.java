@@ -2,6 +2,7 @@ package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.MyGdxGame;
 
@@ -11,6 +12,7 @@ import com.mygdx.game.MyGdxGame;
 public class MenuState extends State {
     private Texture background;
     private Texture playbtn;
+    private BitmapFont font;
     public MenuState(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, MyGdxGame.WIDTH / 2, MyGdxGame.HEIGHT / 2);
@@ -38,6 +40,8 @@ public class MenuState extends State {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
         sb.draw(background, 0, 0);
+        System.out.println(score);
+        //font.draw(sb,"Score : "+ score,100,100);
         //sb.draw(background, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
         //sb.draw(playbtn, (MyGdxGame.WIDTH/2)-(playbtn.getWidth()/2),MyGdxGame.HEIGHT/2);
         sb.draw(playbtn,cam.position.x-playbtn.getWidth()/2,cam.position.y);

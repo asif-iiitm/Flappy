@@ -26,7 +26,7 @@ public class PlayState extends State {
     private Vector2 groundPos1 , groundPos2;
     public BitmapFont font;
     private Tube tube;
-    public int score=0;
+    //public int score=0;
     public int death;
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -68,12 +68,17 @@ public class PlayState extends State {
             if(cam.position.x - (cam.viewportWidth/2)>tube.getPosTopTube().x+tube.getTopTube().getWidth()) {
                 score++;
                 tube.reposition((tube.getPosTopTube().x + ((Tube.TUBE_WIDTH + TUBE_SPACING) * TUBE_COUNT)));
+//                if(bird.getPosition().x>tube.getPosTopTube().x)
+//                    score++;
 
             }
             if(tube.collides(bird.getBounds())){
-                death++;
-                gsm.set(new PlayState(gsm));
+                //death++;
+                //Switching to GameOver on collision
+                gsm.set(new MenuState(gsm));
+                //gsm.set(new PlayState(gsm));
             }
+
 
         }
 
@@ -81,8 +86,9 @@ public class PlayState extends State {
         if(bird.getPosition().y <=ground.getHeight()+GROUND_Y_OFFSET) {
             bird.colliding = true;
             death++;
-            score=0;
-            gsm.set(new PlayState(gsm));
+            //score=0;
+            //Switching to GameOver State on touching ground
+            gsm.set(new MenuState(gsm));
         }
         cam.update();
 
