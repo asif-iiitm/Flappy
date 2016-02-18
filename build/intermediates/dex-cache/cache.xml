@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/uchiha/Desktop/Flappy/core/build/libs/core-1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b12b66d3714fb638553f010223b473c314ff1274">
+        <dex dex="/home/uchiha/Desktop/Flappy/android/build/intermediates/pre-dexed/debug/core-1.0-d3a6978cc2ccd72fb1fb430160d393e0808f785a.jar" />
+    </item>
+
+</items>
