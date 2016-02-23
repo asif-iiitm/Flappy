@@ -18,6 +18,7 @@ public class MenuState extends State {
         cam.setToOrtho(false, MyGdxGame.WIDTH / 2, MyGdxGame.HEIGHT / 2);
         background = new Texture("bg.png");
         playbtn = new Texture("playbtn.png");
+        font=new BitmapFont();
     }
 
     @Override
@@ -45,6 +46,7 @@ public class MenuState extends State {
         //sb.draw(background, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
         //sb.draw(playbtn, (MyGdxGame.WIDTH/2)-(playbtn.getWidth()/2),MyGdxGame.HEIGHT/2);
         sb.draw(playbtn,cam.position.x-playbtn.getWidth()/2,cam.position.y);
+        //font.draw(sb,"Lol Loser  !! ", 100, 250);
         sb.end();
 
     }

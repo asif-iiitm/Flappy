@@ -1,6 +1,7 @@
 package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -24,12 +25,21 @@ public class PlayState extends State {
     private Texture bg;
     private Texture ground;
     private Vector2 groundPos1 , groundPos2;
-    public BitmapFont font;
+    private BitmapFont font;
     private Tube tube;
+    private Preferences prefs;
     //public int score=0;
     public int death;
     public PlayState(GameStateManager gsm) {
         super(gsm);
+        prefs = Gdx.app.getPreferences("My Preferences");
+        //prefs.putInteger("scord", score);
+
+    //persist preferences
+
+
+    //get Integer from preferences, 0 is the default value.
+        prefs.getInteger("score", 0);
         bird = new Bird(50,300);
         cam.setToOrtho(false, MyGdxGame.WIDTH/2,MyGdxGame.HEIGHT/2);
         bg = new Texture("bg.png");
@@ -67,6 +77,9 @@ public class PlayState extends State {
 
             if(cam.position.x - (cam.viewportWidth/2)>tube.getPosTopTube().x+tube.getTopTube().getWidth()) {
                 score++;
+                if(prefs.getInteger("scord")<score)
+                prefs.putInteger("scord", score);
+                prefs.flush();
                 tube.reposition((tube.getPosTopTube().x + ((Tube.TUBE_WIDTH + TUBE_SPACING) * TUBE_COUNT)));
 //                if(bird.getPosition().x>tube.getPosTopTube().x)
 //                    score++;
@@ -104,8 +117,10 @@ public class PlayState extends State {
         sb.draw(bird.getTexture(), bird.getPosition().x, bird.getPosition().y);
 
         for(Tube tube: tubes) {
-            font.draw(sb,"Score : "+ score,bird.getPosition().x+120, 400);
-            font.draw(sb,"Death : "+ death,bird.getPosition().x+120, 380);
+            font.draw(sb,"Score : "+ score,bird.getPosition().x+120, 380);
+            //font.draw(sb,"Death : "+ death,bird.getPosition().x+120, 380);
+            //prefs.getInteger("score");
+            font.draw(sb, "High Score : " + prefs.getInteger("scord"), bird.getPosition().x+100, 400);
             sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
             sb.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
         }
